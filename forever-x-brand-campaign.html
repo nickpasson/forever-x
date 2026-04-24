@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  (function() {
+    var correct = 'heaven';
+    var key = 'fx_auth';
+    function showGate() {
+      document.body.style.display = 'none';
+      var overlay = document.createElement('div');
+      overlay.id = 'fx-gate';
+      overlay.style.cssText = 'position:fixed;inset:0;background:#1C1C1C;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:99999;';
+      overlay.innerHTML = '<div style="margin-bottom:40px;"><svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 133.44 65\' width=\'160\' height=\'78\'><polyline fill=\'#F2EDE8\' points=\'77.81 9.66 89.73 21.79 78.84 32.5 89.79 43.26 77.88 55.38 66.72 44.42 55.78 55.17 43.86 43.05 54.59 32.5 43.83 21.92 55.74 9.8 66.71 20.58 77.81 9.66\'/><path fill=\'#D4401A\' d=\'M41.59,45.03c-2.56,1.86-5.69,2.97-9.09,2.97-8.55,0-15.5-6.95-15.5-15.5s6.95-15.5,15.5-15.5c3.38,0,6.51,1.1,9.06,2.95l.13-.13,11.85-12.06C47.86,2.93,40.52,0,32.5,0,14.58,0,0,14.58,0,32.5s14.58,32.5,32.5,32.5c8.04,0,15.4-2.94,21.07-7.79l-11.86-12.06-.13-.13Z\'/><path fill=\'#D4401A\' d=\'M100.94,0c-7.96,0-15.25,2.88-20.91,7.64l11.84,12.04.16.16c2.52-1.78,5.6-2.84,8.92-2.84,8.55,0,15.5,6.95,15.5,15.5s-6.95,15.5-15.5,15.5c-3.29,0-6.34-1.04-8.86-2.8l-.16.16-11.84,12.04c5.65,4.74,12.92,7.59,20.85,7.59,17.92,0,32.5-14.58,32.5-32.5S118.86,0,100.94,0Z\'/></svg></div><div style=\'font-family:Bebas Neue,cursive;font-size:28px;letter-spacing:6px;color:#F2EDE8;margin-bottom:4px;\'>FOREVER<span style=\'color:#D4401A;\'>-X</span></div><div style=\'font-family:Space Mono,monospace;font-size:9px;letter-spacing:3px;color:#A8A89A;margin-bottom:48px;\'>BRAND &amp; CAMPAIGN — CONFIDENTIAL</div><div style=\'display:flex;flex-direction:column;align-items:center;gap:12px;\'><input id=\'fx-pw\' type=\'password\' placeholder=\'Enter password\' style=\'background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,0.2);color:#F2EDE8;font-family:Space Mono,monospace;font-size:13px;letter-spacing:3px;padding:10px 0;width:220px;text-align:center;outline:none;\'/><div id=\'fx-err\' style=\'font-family:Space Mono,monospace;font-size:9px;letter-spacing:2px;color:#D4401A;height:16px;\'></div><button onclick=\'fxCheck()\' style=\'background:#D4401A;color:#fff;border:none;cursor:pointer;font-family:Space Mono,monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;padding:14px 36px;margin-top:4px;\'>Enter</button></div>';
+      document.documentElement.appendChild(overlay);
+      setTimeout(function(){ var p=document.getElementById('fx-pw'); if(p) p.focus(); }, 50);
+      document.getElementById('fx-pw').addEventListener('keydown', function(e){ if(e.key==='Enter') fxCheck(); });
+    }
+    window.fxCheck = function() {
+      var v = document.getElementById('fx-pw').value;
+      if(v === correct) {
+        sessionStorage.setItem(key, correct);
+        document.getElementById('fx-gate').remove();
+        document.body.style.display = '';
+      } else {
+        document.getElementById('fx-err').textContent = 'Incorrect password';
+        document.getElementById('fx-pw').value = '';
+        document.getElementById('fx-pw').focus();
+      }
+    };
+    if(sessionStorage.getItem(key) !== correct) {
+      if(document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', showGate);
+      } else {
+        showGate();
+      }
+    }
+  })();
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forever-x — Brand & Campaign Document</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,600;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:    #F2EDE8;
+    --dark:  #1C1C1C;
+    --brick: #D4401A;
+    --warm:  #8C8C7A;
+    --mid:   #E5E0D8;
+    --muted: #A8A89A;
+    --cream: #FAF7F4;
+    --panel: #EDEAE4;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--dark); font-family: 'DM Sans', sans-serif; font-weight: 300; overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 48px;
+    background: rgba(242,237,232,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(28,28,28,0.07);
+  }
+  .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 4px; color: var(--brick); }
+  .nav-logo span { color: var(--dark); }
+  .nav-links { display: flex; gap: 24px; list-style: none; }
+  .nav-links a { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--dark); }
+  .nav-section-marker {
+    font-family: 'Space Mono', monospace; font-size: 8px; letter-spacing: 2px;
+    text-transform: uppercase; color: rgba(212,64,26,0.5); padding: 2px 8px;
+    border: 1px solid rgba(212,64,26,0.2); border-radius: 2px;
+  }
+
+  /* COVER */
+  .cover {
+    min-height: 100vh; display: flex; flex-direction: column;
+    justify-content: space-between; padding: 120px 48px 80px;
+    position: relative; overflow: hidden; background: var(--dark);
+  }
+  .cover-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px); background-size: 60px 60px; }
+  .cover-glow { position: absolute; inset: 0; background: radial-gradient(ellipse at 75% 20%, rgba(212,64,26,0.18) 0%, transparent 60%); }
+  .cover-top { position: relative; }
+  .cover-doc-label { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--brick); margin-bottom: 48px; display: flex; align-items: center; gap: 12px; }
+  .cover-doc-label::before { content: ''; display: inline-block; width: 32px; height: 1px; background: var(--brick); }
+  .cover-brandmark { font-family: 'Bebas Neue', sans-serif; font-size: clamp(80px, 14vw, 200px); line-height: 0.88; color: var(--bg); letter-spacing: 2px; }
+  .cover-brandmark .x { color: var(--brick); }
+  .cover-bottom { position: relative; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 24px; }
+  .cover-tagline-label { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 8px; }
+  .cover-tagline { font-family: 'Space Mono', monospace; font-size: 13px; letter-spacing: 4px; text-transform: uppercase; color: var(--bg); }
+  .cover-tagline .accent { color: var(--brick); }
+  .cover-meta { text-align: right; }
+  .cover-meta-item { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 4px; }
+  .cover-meta-item span { color: rgba(255,255,255,0.5); }
+
+  /* CHAPTER BREAK */
+  .chapter-break {
+    background: var(--brick); padding: 48px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .chapter-break-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px, 6vw, 80px); color: #fff; line-height: 1; letter-spacing: 2px; }
+  .chapter-break-sub { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-top: 8px; }
+  .chapter-break-num { font-family: 'Bebas Neue', sans-serif; font-size: 120px; color: rgba(255,255,255,0.12); line-height: 1; }
+
+  /* SECTIONS */
+  section { padding: 100px 48px; position: relative; }
+  .section-eyebrow { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--brick); margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+  .section-eyebrow .num { color: var(--muted); }
+  .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(44px, 6vw, 88px); line-height: 0.95; margin-bottom: 48px; color: var(--dark); }
+  .divider { width: 100%; height: 1px; background: rgba(28,28,28,0.07); }
+
+  /* BRAND ESSENCE */
+  .essence { background: var(--bg); }
+  .essence-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 2px; }
+  .essence-card { padding: 48px 40px; }
+  .essence-card.ec-dark { background: var(--dark); }
+  .essence-card.ec-mid { background: var(--mid); }
+  .essence-card.ec-brick { background: var(--brick); }
+  .essence-card.ec-panel { background: var(--panel); }
+  .essence-label { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 16px; }
+  .ec-dark .essence-label { color: var(--brick); }
+  .ec-mid .essence-label { color: var(--brick); }
+  .ec-brick .essence-label { color: rgba(255,255,255,0.5); }
+  .ec-panel .essence-label { color: var(--brick); }
+  .essence-value { font-family: 'Bebas Neue', sans-serif; font-size: 40px; line-height: 1; margin-bottom: 12px; }
+  .ec-dark .essence-value { color: var(--bg); }
+  .ec-mid .essence-value { color: var(--dark); }
+  .ec-brick .essence-value { color: #fff; }
+  .ec-panel .essence-value { color: var(--dark); }
+  .essence-body { font-size: 14px; line-height: 1.75; }
+  .ec-dark .essence-body { color: rgba(242,237,232,0.55); }
+  .ec-mid .essence-body { color: rgba(28,28,28,0.6); }
+  .ec-brick .essence-body { color: rgba(255,255,255,0.75); }
+  .ec-panel .essence-body { color: rgba(28,28,28,0.6); }
+
+  /* NAMING */
+  .naming { background: var(--mid); }
+  .naming-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .naming-block-label { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--brick); margin-bottom: 16px; }
+  .naming-block-title { font-family: 'Bebas Neue', sans-serif; font-size: 56px; line-height: 0.95; color: var(--dark); margin-bottom: 16px; }
+  .naming-block-title .accent { color: var(--brick); }
+  .naming-block-body { font-size: 15px; line-height: 1.8; color: rgba(28,28,28,0.65); }
+  .naming-block-body p + p { margin-top: 16px; }
+  .naming-rule { width: 100%; height: 1px; background: rgba(28,28,28,0.1); margin: 24px 0; }
+
+  /* LOCKUPS */
+  .lockups { background: var(--bg); }
+  .lockup-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-bottom: 2px; }
+  .lockup-panel { padding: 56px 40px; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; min-height: 220px; position: relative; }
+  .lp-dark { background: var(--dark); }
+  .lp-light { background: var(--cream); border: 1px solid rgba(28,28,28,0.07); }
+  .lp-brick { background: var(--brick); }
+  .lp-mid { background: var(--mid); }
+  .lp-dark2 { background: #2A2A2A; }
+  .lockup-bm { font-family: 'Bebas Neue', sans-serif; font-size: 40px; letter-spacing: 4px; line-height: 1; margin-bottom: 8px; }
+  .lockup-rule { width: 100%; height: 1px; margin-bottom: 8px; }
+  .lockup-tl { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 3px; text-transform: uppercase; }
+  .lp-dark .lockup-bm { color: var(--bg); }
+  .lp-dark .lockup-bm .x { color: var(--brick); }
+  .lp-dark .lockup-rule { background: rgba(255,255,255,0.1); }
+  .lp-dark .lockup-tl { color: var(--muted); }
+  .lp-dark .lockup-tl .accent { color: var(--brick); }
+  .lp-light .lockup-bm { color: var(--dark); }
+  .lp-light .lockup-bm .x { color: var(--brick); }
+  .lp-light .lockup-rule { background: rgba(28,28,28,0.1); }
+  .lp-light .lockup-tl { color: var(--muted); }
+  .lp-light .lockup-tl .accent { color: var(--brick); }
+  .lp-brick .lockup-bm { color: #fff; }
+  .lp-brick .lockup-bm .x { color: var(--dark); }
+  .lp-brick .lockup-rule { background: rgba(255,255,255,0.2); }
+  .lp-brick .lockup-tl { color: rgba(255,255,255,0.6); }
+  .lp-brick .lockup-tl .accent { color: #fff; }
+  .lp-mid .lockup-bm { color: var(--dark); }
+  .lp-mid .lockup-bm .x { color: var(--brick); }
+  .lp-mid .lockup-rule { background: rgba(28,28,28,0.1); }
+  .lp-mid .lockup-tl { color: var(--muted); }
+  .lp-mid .lockup-tl .accent { color: var(--brick); }
+  .lp-dark2 .lockup-bm { color: var(--bg); }
+  .lp-dark2 .lockup-bm .x { color: var(--brick); }
+  .lp-dark2 .lockup-rule { background: rgba(255,255,255,0.08); }
+  .lp-dark2 .lockup-tl { color: var(--muted); }
+  .lp-dark2 .lockup-tl .accent { color: var(--brick); }
+  .lockup-inline { flex-direction: row; align-items: center; gap: 16px; }
+  .lockup-inline .lockup-bm { margin-bottom: 0; font-size: 32px; }
+  .lockup-vr { width: 1px; height: 32px; flex-shrink: 0; }
+  .lp-dark .lockup-vr, .lp-dark2 .lockup-vr { background: rgba(255,255,255,0.12); }
+  .lp-light .lockup-vr, .lp-mid .lockup-vr { background: rgba(28,28,28,0.12); }
+  .lp-brick .lockup-vr { background: rgba(255,255,255,0.2); }
+  .lockup-panel-label { position: absolute; top: 16px; right: 20px; font-family: 'Space Mono', monospace; font-size: 8px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.25; }
+  .lp-dark .lockup-panel-label, .lp-brick .lockup-panel-label, .lp-dark2 .lockup-panel-label { color: #fff; }
+  .lp-light .lockup-panel-label, .lp-mid .lockup-panel-label { color: var(--dark); }
+
+  /* FOREVER-X WORD FEATURE */
+  .forever-feature { background: var(--dark); padding: 100px 48px; }
+  .forever-feature .section-eyebrow { color: var(--brick); }
+  .forever-feature .section-eyebrow .num { color: rgba(255,255,255,0.2); }
+  .forever-feature .section-title { color: var(--bg); }
+  .forever-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-bottom: 2px; }
+  .forever-word { padding: 32px; background: #242424; transition: background 0.2s; cursor: default; }
+  .forever-word:hover { background: #2e2e2e; }
+  .forever-prefix { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--brick); margin-bottom: 8px; }
+  .forever-word-value { font-family: 'Bebas Neue', sans-serif; font-size: 44px; line-height: 1; color: var(--bg); }
+  .forever-word-sub { font-size: 11px; color: rgba(242,237,232,0.3); margin-top: 8px; font-style: italic; line-height: 1.5; }
+  .forever-explainer { background: #1a1a1a; padding: 40px; }
+  .forever-explainer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  .forever-explainer p { font-size: 15px; line-height: 1.8; color: rgba(242,237,232,0.6); }
+  .forever-explainer p strong { color: var(--bg); font-weight: 600; }
+  .forever-demo-label { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--brick); margin-bottom: 16px; }
+  .forever-demo-lockup { display: flex; align-items: baseline; gap: 12px; }
+  .forever-demo-forever { font-family: 'Bebas Neue', sans-serif; font-size: 52px; color: rgba(242,237,232,0.25); line-height: 1; }
+  .forever-demo-word { font-family: 'Bebas Neue', sans-serif; font-size: 52px; color: var(--brick); line-height: 1; }
+
+  /* PALETTE */
+  .palette-section { background: var(--bg); }
+  .palette-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-bottom: 48px; }
+  .palette-swatch { aspect-ratio: 4/3; display: flex; flex-direction: column; justify-content: flex-end; padding: 20px; }
+  .palette-swatch-name { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 2px; }
+  .palette-swatch-hex { font-family: 'Space Mono', monospace; font-size: 11px; opacity: 0.5; }
+  .palette-usage { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+  .palette-use { background: var(--mid); padding: 28px; }
+  .palette-use-swatch { width: 32px; height: 32px; margin-bottom: 12px; border-radius: 1px; }
+  .palette-use-label { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--brick); margin-bottom: 8px; }
+  .palette-use-body { font-size: 12px; line-height: 1.6; color: rgba(28,28,28,0.6); }
+
+  /* TYPOGRAPHY */
+  .typography { background: var(--mid); }
+  .type-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .type-card { background: var(--bg); padding: 48px 40px; }
+  .type-card.dark-card { background: var(--dark); }
+  .type-label { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--brick); margin-bottom: 20px; }
+  .type-specimen-bebas { font-family: 'Bebas Neue', sans-serif; font-size: 64px; line-height: 0.95; color: var(--dark); margin-bottom: 16px; }
+  .dark-card .type-specimen-bebas { color: var(--bg); }
+  .type-specimen-mono { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; line-height: 1.8; }
+  .dark-card .type-specimen-mono { color: rgba(242,237,232,0.35); }
+  .type-meta { margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(28,28,28,0.08); display: flex; flex-direction: column; gap: 8px; }
+  .dark-card .type-meta { border-top-color: rgba(255,255,255,0.06); }
+  .type-meta-row { display: flex; gap: 16px; font-size: 12px; }
+  .type-meta-row span:first-child { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); min-width: 80px; }
+  .type-meta-row span:last-child { color: rgba(28,28,28,0.6); }
+  .dark-card .type-meta-row span:last-child { color: rgba(242,237,232,0.45); }
+
+  /* VOICE */
+  .voice { background: var(--bg); }
+  .voice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 2px; }
+  .voice-card { padding: 48px 40px; }
+  .voice-card.yes { background: var(--mid); }
+  .voice-card.no { background: var(--panel); }
+  .voice-card-label { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; }
+  .voice-card.yes .voice-card-label { color: var(--brick); }
+  .voice-card.no .voice-card-label { color: var(--muted); }
+  .voice-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .voice-list li { font-size: 14px; line-height: 1.6; display: flex; gap: 12px; }
+  .voice-card.yes .voice-list li { color: rgba(28,28,28,0.7); }
+  .voice-card.yes .voice-list li::before { content: '✓'; color: var(--brick); flex-shrink: 0; font-weight: 700; }
+  .voice-card.no .voice-list li { color: rgba(28,28,28,0.5); text-decoration: line-through; text-decoration-color: rgba(28,28,28,0.25); }
+  .voice-card.no .voice-list li::before { content: '✗'; color: var(--muted); flex-shrink: 0; }
+
+  /* MANIFESTO */
+  .manifesto-block { background: var(--dark); padding: 80px 48px; }
+  .manifesto-block .section-eyebrow { color: var(--brick); }
+  .manifesto-block .section-eyebrow .num { color: rgba(255,255,255,0.2); }
+  .manifesto-text { max-width: 860px; font-size: clamp(18px, 2.2vw, 26px); line-height: 1.7; color: rgba(242,237,232,0.82); font-weight: 300; }
+  .manifesto-text .beat { display: block; margin-top: 1.2em; }
+  .manifesto-text strong { font-weight: 700; color: #fff; }
+  .manifesto-text em { font-style: italic; opacity: 0.7; }
+  .manifesto-cta { margin-top: 56px; font-family: 'Bebas Neue', sans-serif; font-size: 60px; line-height: 1; }
+
+  /* CAMPAIGN HERO */
+  .campaign-hero {
+    min-height: 70vh; display: flex; flex-direction: column;
+    justify-content: flex-end; padding: 100px 48px 80px;
+    position: relative; overflow: hidden;
+  }
+  .campaign-hero-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 72% 12%, rgba(212,64,26,0.08) 0%, transparent 55%),
+      linear-gradient(180deg, #EDE8E2 0%, #F2EDE8 100%);
+  }
+  .campaign-hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(28,28,28,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(28,28,28,0.03) 1px, transparent 1px); background-size: 60px 60px; }
+  .campaign-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(72px, 11vw, 160px); line-height: 0.9; position: relative; margin-bottom: 28px; }
+  .line-brick { color: var(--brick); }
+  .line-stroke { -webkit-text-stroke: 2px var(--dark); color: transparent; }
+  .line-warm { color: var(--warm); }
+  .campaign-sub { max-width: 560px; font-size: 17px; line-height: 1.7; color: rgba(28,28,28,0.6); position: relative; margin-bottom: 40px; }
+  .campaign-meta { display: flex; gap: 48px; position: relative; flex-wrap: wrap; }
+  .campaign-meta-item { display: flex; flex-direction: column; gap: 4px; }
+  .campaign-meta-label { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); }
+  .campaign-meta-value { font-size: 14px; font-weight: 600; color: var(--dark); }
+
+  /* PERSONAS */
+  .personas { background: var(--mid); }
+  .persona-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .persona-card { background: var(--bg); padding: 44px 36px; position: relative; overflow: hidden; }
+  .persona-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--brick); }
+  .persona-icon { font-size: 44px; margin-bottom: 20px; display: block; }
+  .persona-name { font-family: 'Bebas Neue', sans-serif; font-size: 38px; line-height: 1; margin-bottom: 4px; color: var(--dark); }
+  .persona-tag { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--brick); margin-bottom: 20px; display: block; }
+  .persona-desc { font-size: 13px; line-height: 1.7; color: rgba(28,28,28,0.6); margin-bottom: 20px; }
+  .persona-stat { display: flex; align-items: baseline; gap: 8px; margin-bottom: 8px; }
+  .persona-stat span:first-child { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); min-width: 80px; }
+  .persona-stat span:last-child { font-size: 12px; color: rgba(28,28,28,0.6); }
+  .persona-quote { margin-top: 20px; padding: 14px; background: rgba(212,64,26,0.06); border-left: 2px solid var(--brick); font-style: italic; font-size: 13px; color: rgba(28,28,28,0.65); line-height: 1.6; }
+
+  /* CONCEPTS */
+  .concepts { background: var(--bg); }
+  .concept-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .concept-card { background: var(--mid); padding: 44px 36px; }
+  .concept-format { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--brick); margin-bottom: 10px; }
+  .concept-title { font-family: 'Bebas Neue', sans-serif; font-size: 34px; margin-bottom: 18px; line-height: 1; color: var(--dark); }
+  .concept-visual { background: var(--bg); padding: 20px; margin-bottom: 20px; border: 1px solid rgba(28,28,28,0.08); font-size: 13px; line-height: 1.7; color: rgba(28,28,28,0.58); font-style: italic; }
+  .concept-visual strong { color: var(--dark); font-style: normal; font-size: 10px; font-family: 'Space Mono', monospace; letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 8px; }
+  .concept-copy { margin-bottom: 20px; }
+  .concept-copy-label { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+  .concept-copy-text { font-size: 15px; line-height: 1.6; color: var(--dark); font-weight: 600; }
+  .concept-copy-sub { font-size: 13px; color: rgba(28,28,28,0.55); margin-top: 4px; line-height: 1.5; }
+  .mj-prompt { background: rgba(212,64,26,0.07); border: 1px solid rgba(212,64,26,0.18); padding: 14px; border-radius: 2px; }
+  .mj-prompt-label { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--brick); margin-bottom: 6px; }
+  .mj-prompt-text { font-family: 'Space Mono', monospace; font-size: 11px; line-height: 1.6; color: rgba(28,28,28,0.6); }
+  .sample-block { background: var(--panel); padding: 40px; margin-top: 2px; }
+  .sample-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+
+  /* CHANNELS */
+  .channels { background: var(--dark); }
+  .channels .section-eyebrow { color: var(--brick); }
+  .channels .section-eyebrow .num { color: rgba(255,255,255,0.2); }
+  .channels .section-title { color: var(--bg); }
+  .channel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-bottom: 2px; }
+  .channel-card { padding: 40px 36px; position: relative; }
+  .channel-card.primary { background: var(--brick); }
+  .channel-card.secondary { background: #2A2A2A; }
+  .channel-card.tertiary { background: #242424; }
+  .channel-rank { font-family: 'Bebas Neue', sans-serif; font-size: 80px; line-height: 0.85; margin-bottom: 16px; opacity: 0.15; }
+  .channel-card.primary .channel-rank { color: #fff; }
+  .channel-card.secondary .channel-rank, .channel-card.tertiary .channel-rank { color: var(--bg); }
+  .channel-platform { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px; }
+  .channel-card.primary .channel-platform { color: rgba(255,255,255,0.6); }
+  .channel-card.secondary .channel-platform, .channel-card.tertiary .channel-platform { color: var(--brick); }
+  .channel-name { font-family: 'Bebas Neue', sans-serif; font-size: 32px; line-height: 1; margin-bottom: 16px; }
+  .channel-card.primary .channel-name { color: #fff; }
+  .channel-card.secondary .channel-name, .channel-card.tertiary .channel-name { color: var(--bg); }
+  .channel-body { font-size: 13px; line-height: 1.7; }
+  .channel-card.primary .channel-body { color: rgba(255,255,255,0.75); }
+  .channel-card.secondary .channel-body, .channel-card.tertiary .channel-body { color: rgba(242,237,232,0.55); }
+  .channel-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+  .channel-tag { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 1px; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; }
+  .channel-card.primary .channel-tag { background: rgba(255,255,255,0.15); color: #fff; }
+  .channel-card.secondary .channel-tag, .channel-card.tertiary .channel-tag { background: rgba(255,255,255,0.06); color: var(--muted); }
+  .targeting-detail { background: #222; padding: 40px; }
+  .targeting-detail-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; }
+  .targeting-col-label { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--brick); margin-bottom: 16px; }
+  .targeting-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .targeting-list li { font-size: 13px; line-height: 1.5; color: rgba(242,237,232,0.55); display: flex; gap: 10px; }
+  .targeting-list li::before { content: '→'; color: var(--brick); flex-shrink: 0; }
+
+  /* BUDGET */
+  .budget { background: var(--bg); }
+  .budget-phases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-bottom: 2px; }
+  .budget-phase { padding: 44px 36px; }
+  .budget-phase:nth-child(1) { background: var(--dark); }
+  .budget-phase:nth-child(2) { background: #2A2A2A; }
+  .budget-phase:nth-child(3) { background: #333; }
+  .budget-phase-label { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--brick); margin-bottom: 6px; }
+  .budget-phase-title { font-family: 'Bebas Neue', sans-serif; font-size: 52px; line-height: 1; margin-bottom: 4px; color: var(--bg); }
+  .budget-phase-sub { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 1px; color: var(--muted); margin-bottom: 28px; }
+  .budget-line { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .budget-line-label { font-size: 13px; color: rgba(242,237,232,0.55); }
+  .budget-line-value { font-family: 'Space Mono', monospace; font-size: 12px; color: var(--bg); }
+  .budget-line-value.accent { color: var(--brick); }
+  .budget-total { margin-top: 20px; padding-top: 16px; display: flex; justify-content: space-between; align-items: baseline; }
+  .budget-total-label { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
+  .budget-total-value { font-family: 'Bebas Neue', sans-serif; font-size: 36px; color: var(--bg); line-height: 1; }
+  .budget-milestone { background: rgba(212,64,26,0.1); border-left: 3px solid var(--brick); padding: 16px 20px; margin-top: 20px; }
+  .budget-milestone-label { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--brick); margin-bottom: 6px; }
+  .budget-milestone p { font-size: 12px; line-height: 1.6; color: rgba(242,237,232,0.55); }
+  .budget-model { background: var(--mid); padding: 40px; }
+  .budget-model-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .budget-model-label { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--brick); margin-bottom: 16px; }
+  .budget-model-title { font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: var(--dark); margin-bottom: 12px; line-height: 1; }
+  .budget-model p { font-size: 14px; line-height: 1.7; color: rgba(28,28,28,0.6); }
+  .pricing-row { display: flex; gap: 2px; margin-top: 16px; }
+  .pricing-tile { flex: 1; padding: 20px; background: var(--bg); }
+  .pricing-tile-label { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+  .pricing-tile-value { font-family: 'Bebas Neue', sans-serif; font-size: 36px; color: var(--brick); line-height: 1; }
+  .pricing-tile-sub { font-size: 12px; color: rgba(28,28,28,0.5); margin-top: 4px; }
+
+  /* FADE */
+  .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* CLOSING */
+  .closing { min-height: 60vh; display: flex; flex-direction: column; justify-content: center; background: var(--dark); position: relative; overflow: hidden; }
+  .closing-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 50%, rgba(212,64,26,0.12) 0%, transparent 70%); }
+  .closing-grid-bg { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px); background-size: 60px 60px; }
+  .closing-content { position: relative; text-align: center; padding: 100px 48px; }
+  .closing-bm { font-family: 'Bebas Neue', sans-serif; font-size: clamp(56px, 10vw, 140px); line-height: 0.9; color: var(--bg); margin-bottom: 16px; letter-spacing: 2px; }
+  .closing-bm .x { color: var(--brick); }
+  .closing-tagline { font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 4px; text-transform: uppercase; color: var(--muted); margin-bottom: 32px; }
+  .closing-tagline .accent { color: var(--brick); }
+  .closing-sub { font-size: 17px; color: rgba(242,237,232,0.5); max-width: 520px; margin: 0 auto 40px; line-height: 1.7; }
+  .closing-pill { display: inline-block; border: 1px solid var(--brick); color: var(--brick); font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; padding: 14px 28px; }
+
+  footer { background: #151515; padding: 24px 48px; display: flex; justify-content: space-between; align-items: center; }
+  footer .logo { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 4px; color: var(--brick); }
+  footer .logo span { color: var(--bg); }
+  footer .info { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 2px; color: var(--warm); text-transform: uppercase; }
+
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    section { padding: 72px 24px; }
+    .cover, .campaign-hero, .manifesto-block { padding-left: 24px; padding-right: 24px; }
+    .chapter-break { padding: 32px 24px; }
+    .essence-grid, .naming-grid, .lockup-grid, .type-grid, .voice-grid,
+    .forever-grid, .forever-explainer-grid, .palette-row, .palette-usage,
+    .persona-grid, .concept-grid, .channel-grid, .targeting-detail-grid,
+    .budget-phases, .budget-model-grid, .sample-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">FOREVER<span>-X</span></div>
+  <ul class="nav-links">
+    <li><a href="#essence">Brand</a></li>
+    <li><a href="#naming">Name</a></li>
+    <li><a href="#lockups">Lockups</a></li>
+    <li><a href="#feature">Feature</a></li>
+    <li><a href="#palette">Palette</a></li>
+    <li><a href="#voice">Voice</a></li>
+    <li class="nav-section-marker">Campaign</li>
+    <li><a href="#personas">Audience</a></li>
+    <li><a href="#concepts">Creative</a></li>
+    <li><a href="#channels">Channels</a></li>
+    <li><a href="#budget">Budget</a></li>
+  </ul>
+</nav>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-grid"></div>
+  <div class="cover-glow"></div>
+  <div class="cover-top">
+    <div class="cover-doc-label">Brand &amp; Campaign Document — Confidential</div>
+    <div style="display:flex;align-items:flex-end;gap:40px;flex-wrap:wrap;">
+      <div class="cover-brandmark">FOREVER<br><span class="x">-X.</span></div>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 133.44 65" width="120" height="58" style="margin-bottom:16px;flex-shrink:0;">
+        <polyline fill="#F2EDE8" points="77.81 9.66 89.73 21.79 78.84 32.5 89.79 43.26 77.88 55.38 66.72 44.42 55.78 55.17 43.86 43.05 54.59 32.5 43.83 21.92 55.74 9.8 66.71 20.58 77.81 9.66"/>
+        <path fill="#D4401A" d="M41.59,45.03c-2.56,1.86-5.69,2.97-9.09,2.97-8.55,0-15.5-6.95-15.5-15.5s6.95-15.5,15.5-15.5c3.38,0,6.51,1.1,9.06,2.95l.13-.13,11.85-12.06C47.86,2.93,40.52,0,32.5,0,14.58,0,0,14.58,0,32.5s14.58,32.5,32.5,32.5c8.04,0,15.4-2.94,21.07-7.79l-11.86-12.06-.13-.13Z"/>
+        <path fill="#D4401A" d="M100.94,0c-7.96,0-15.25,2.88-20.91,7.64l11.84,12.04.16.16c2.52-1.78,5.6-2.84,8.92-2.84,8.55,0,15.5,6.95,15.5,15.5s-6.95,15.5-15.5,15.5c-3.29,0-6.34-1.04-8.86-2.8l-.16.16-11.84,12.04c5.65,4.74,12.92,7.59,20.85,7.59,17.92,0,32.5-14.58,32.5-32.5S118.86,0,100.94,0Z"/>
+      </svg>
+    </div>
+  </div>
+  <div class="cover-bottom">
+    <div>
+      <div class="cover-tagline-label">Tagline</div>
+      <div class="cover-tagline"><span class="accent">BEYOND</span> GOODBYE</div>
+    </div>
+    <div class="cover-meta">
+      <div class="cover-meta-item">Domain <span>forever-x.com</span></div>
+      <div class="cover-meta-item">Version <span>2.0</span></div>
+      <div class="cover-meta-item">Status <span>Internal Only</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 01 BRAND ESSENCE -->
+<section class="essence" id="essence">
+  <div class="section-eyebrow"><span class="num">01 /</span> Brand Essence</div>
+  <h2 class="section-title fade-in">WHAT WE<br>STAND FOR.</h2>
+  <div class="essence-grid fade-in">
+    <div class="essence-card ec-dark">
+      <div class="essence-label">The Problem</div>
+      <div class="essence-value">THE INDUSTRY<br>IS DEAD.</div>
+      <p class="essence-body">Every competitor in the digital memorial space has made the same choice — sanitise death. Soft palettes. Gentle language. Stock photos of candles. They treat grief as something to be managed quietly, alone. But the people who need this service most aren't quiet people.</p>
+    </div>
+    <div class="essence-card ec-mid">
+      <div class="essence-label">The Insight</div>
+      <div class="essence-value">THE WAY YOU REMEMBER SOMEONE SHOULD MATCH HOW THEY LIVED.</div>
+      <p class="essence-body">For a lot of us, that means loud. That means proud. That means documented, shared, and celebrated — not whispered in a paragraph in a local paper.</p>
+    </div>
+    <div class="essence-card ec-panel">
+      <div class="essence-label">The Territory</div>
+      <div class="essence-value">CELEBRATION OF LIFE.<br>NOT DEATH CARE.</div>
+      <p class="essence-body">Forever-x doesn't compete in the death-care space. It competes in the celebration-of-life space — and that space has no real owner yet. We are the first brand in this category with the courage to match the energy of the lives it celebrates.</p>
+    </div>
+    <div class="essence-card ec-brick">
+      <div class="essence-label">The Promise</div>
+      <div class="essence-value">BEYOND<br>GOODBYE.</div>
+      <p class="essence-body">A memorial isn't where someone ends. It's where their story lives on — loud, proud, and fully alive. Forever-x is the place where the whole person exists: the sends, the sessions, the stories that start with "you won't believe this."</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 02 THE NAME -->
+<section class="naming" id="naming">
+  <div class="section-eyebrow"><span class="num">02 /</span> The Name</div>
+  <h2 class="section-title fade-in">WHY<br>FOREVER-X.</h2>
+  <div class="naming-grid fade-in">
+    <div>
+      <div class="naming-block-label">Forever</div>
+      <div class="naming-block-title">FOREVER<span class="accent">.</span></div>
+      <div class="naming-block-body">
+        <p>Warm, universal, emotionally immediate. Forever needs no explanation — everyone understands what it means and feels what it promises. It's completely category-appropriate without being death-coded.</p>
+        <p>Forever is expansive enough to survive every product the brand will ever build. It doesn't limit us to memorials, to a single audience, or to a single moment. It's the platform word for everything we will ever do.</p>
+        <p>Forever is also a structural promise — the thing that makes this different from a social media post that disappears, from a funeral home guestbook that gets filed away, from a memory that fades.</p>
+      </div>
+      <div class="naming-rule"></div>
+      <div class="naming-block-label">The -x</div>
+      <div class="naming-block-title" style="font-size:40px;">-<span class="accent">X</span></div>
+      <div class="naming-block-body">
+        <p>The hyphen-x is a placeholder — deliberately incomplete. It's an invitation. <strong>Forever-wild. Forever-brave. Forever-kind. Forever-Sarah.</strong> The x gets replaced with the quality, the name, the word that defined that person.</p>
+        <p>It turns every memorial into a declaration. Not "here is where someone died" but "here is what they were." The brand name is the product feature — they're the same idea.</p>
+        <p>The x also carries defiance. In a category that whispers, a lowercase x with a hyphen is a typographic provocation. It signals that this platform isn't going to behave like the others.</p>
+      </div>
+    </div>
+    <div>
+      <div class="naming-block-label">Tagline</div>
+      <div class="naming-block-title">BEYOND<br><span class="accent">GOODBYE.</span></div>
+      <div class="naming-block-body">
+        <p>The tagline does the work the name doesn't need to do — it signals purpose without limiting the product. "Beyond" carries the brand forward. "Goodbye" acknowledges the reality without dwelling in it.</p>
+        <p>It pairs with the brand name without repeating it — Forever-x / Beyond Goodbye is a complete thought. No overlap. No redundancy.</p>
+        <p>And it's product-agnostic. Whether we build a memorial, a legacy vault, an end-of-life planning tool, or anything else — Beyond Goodbye covers it.</p>
+      </div>
+      <div class="naming-rule"></div>
+      <div class="naming-block-label">Domain</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:40px;color:var(--dark);margin-bottom:12px;line-height:1;">FOREVER-X<span style="color:var(--brick)">.COM</span></div>
+      <div class="naming-block-body">
+        <p>The `.com` TLD is authoritative and unambiguous. The hyphen is part of the brand — it's the pause before the word that matters. Spoken aloud: "forever-x dot com" — clean, memorable, no spelling required.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 03 LOCKUPS -->
+<section class="lockups" id="lockups">
+  <div class="section-eyebrow"><span class="num">03 /</span> Brandmark &amp; Logomark</div>
+  <h2 class="section-title fade-in">HOW THE<br>BRAND SITS.</h2>
+
+  <!-- LOGOMARK — three colourways using uploaded SVG paths -->
+  <div class="fade-in" style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:2px;">
+
+    <!-- DARK -->
+    <div style="background:#1C1C1C;padding:56px 40px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;position:relative;">
+      <div style="position:absolute;top:16px;right:20px;font-family:'Space Mono',monospace;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.2);">Primary / Dark</div>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 133.44 65" width="180" height="88">
+        <polyline fill="#F2EDE8" points="77.81 9.66 89.73 21.79 78.84 32.5 89.79 43.26 77.88 55.38 66.72 44.42 55.78 55.17 43.86 43.05 54.59 32.5 43.83 21.92 55.74 9.8 66.71 20.58 77.81 9.66"/>
+        <path fill="#D4401A" d="M41.59,45.03c-2.56,1.86-5.69,2.97-9.09,2.97-8.55,0-15.5-6.95-15.5-15.5s6.95-15.5,15.5-15.5c3.38,0,6.51,1.1,9.06,2.95l.13-.13,11.85-12.06C47.86,2.93,40.52,0,32.5,0,14.58,0,0,14.58,0,32.5s14.58,32.5,32.5,32.5c8.04,0,15.4-2.94,21.07-7.79l-11.86-12.06-.13-.13Z"/>
+        <path fill="#D4401A" d="M100.94,0c-7.96,0-15.25,2.88-20.91,7.64l11.84,12.04.16.16c2.52-1.78,5.6-2.84,8.92-2.84,8.55,0,15.5,6.95,15.5,15.5s-6.95,15.5-15.5,15.5c-3.29,0-6.34-1.04-8.86-2.8l-.16.16-11.84,12.04c5.65,4.74,12.92,7.59,20.85,7.59,17.92,0,32.5-14.58,32.5-32.5S118.86,0,100.94,0Z"/>
+      </svg>
+      <div style="text-align:center;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:4px;color:#F2EDE8;">FOREVER<span style="color:#D4401A;">-X</span></div>
+        <div style="width:100%;height:1px;background:rgba(255,255,255,0.1);margin:8px 0;"></div>
+        <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#A8A89A;"><span style="color:#D4401A;">BEYOND</span> GOODBYE</div>
+      </div>
+    </div>
+
+    <!-- LIGHT -->
+    <div style="background:#FAF7F4;padding:56px 40px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;position:relative;border:1px solid rgba(28,28,28,0.07);">
+      <div style="position:absolute;top:16px;right:20px;font-family:'Space Mono',monospace;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(28,28,28,0.2);">Primary / Light</div>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 133.44 65" width="180" height="88">
+        <polyline fill="#1C1C1C" points="77.81 9.66 89.73 21.79 78.84 32.5 89.79 43.26 77.88 55.38 66.72 44.42 55.78 55.17 43.86 43.05 54.59 32.5 43.83 21.92 55.74 9.8 66.71 20.58 77.81 9.66"/>
+        <path fill="#D4401A" d="M41.59,45.03c-2.56,1.86-5.69,2.97-9.09,2.97-8.55,0-15.5-6.95-15.5-15.5s6.95-15.5,15.5-15.5c3.38,0,6.51,1.1,9.06,2.95l.13-.13,11.85-12.06C47.86,2.93,40.52,0,32.5,0,14.58,0,0,14.58,0,32.5s14.58,32.5,32.5,32.5c8.04,0,15.4-2.94,21.07-7.79l-11.86-12.06-.13-.13Z"/>
+        <path fill="#D4401A" d="M100.94,0c-7.96,0-15.25,2.88-20.91,7.64l11.84,12.04.16.16c2.52-1.78,5.6-2.84,8.92-2.84,8.55,0,15.5,6.95,15.5,15.5s-6.95,15.5-15.5,15.5c-3.29,0-6.34-1.04-8.86-2.8l-.16.16-11.84,12.04c5.65,4.74,12.92,7.59,20.85,7.59,17.92,0,32.5-14.58,32.5-32.5S118.86,0,100.94,0Z"/>
+      </svg>
+      <div style="text-align:center;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:4px;color:#1C1C1C;">FOREVER<span style="color:#D4401A;">-X</span></div>
+        <div style="width:100%;height:1px;background:rgba(28,28,28,0.1);margin:8px 0;"></div>
+        <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#A8A89A;"><span style="color:#D4401A;">BEYOND</span> GOODBYE</div>
+      </div>
+    </div>
+
+    <!-- BRICK -->
+    <div style="background:#D4401A;padding:56px 40px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;position:relative;">
+      <div style="position:absolute;top:16px;right:20px;font-family:'Space Mono',monospace;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);">Reversed / Brick</div>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 133.44 65" width="180" height="88">
+        <polyline fill="#D4401A" points="77.81 9.66 89.73 21.79 78.84 32.5 89.79 43.26 77.88 55.38 66.72 44.42 55.78 55.17 43.86 43.05 54.59 32.5 43.83 21.92 55.74 9.8 66.71 20.58 77.81 9.66"/>
+        <path fill="#1C1C1C" d="M41.59,45.03c-2.56,1.86-5.69,2.97-9.09,2.97-8.55,0-15.5-6.95-15.5-15.5s6.95-15.5,15.5-15.5c3.38,0,6.51,1.1,9.06,2.95l.13-.13,11.85-12.06C47.86,2.93,40.52,0,32.5,0,14.58,0,0,14.58,0,32.5s14.58,32.5,32.5,32.5c8.04,0,15.4-2.94,21.07-7.79l-11.86-12.06-.13-.13Z"/>
+        <path fill="#1C1C1C" d="M100.94,0c-7.96,0-15.25,2.88-20.91,7.64l11.84,12.04.16.16c2.52-1.78,5.6-2.84,8.92-2.84,8.55,0,15.5,6.95,15.5,15.5s-6.95,15.5-15.5,15.5c-3.29,0-6.34-1.04-8.86-2.8l-.16.16-11.84,12.04c5.65,4.74,12.92,7.59,20.85,7.59,17.92,0,32.5-14.58,32.5-32.5S118.86,0,100.94,0Z"/>
+      </svg>
+      <div style="text-align:center;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:4px;color:#fff;">FOREVER<span style="color:#1C1C1C;">-X</span></div>
+        <div style="width:100%;height:1px;background:rgba(255,255,255,0.2);margin:8px 0;"></div>
+        <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.6);"><span style="color:#fff;">BEYOND</span> GOODBYE</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MARK ONLY — isolated -->
+  <div class="fade-in" style="background:var(--panel);padding:48px;display:flex;flex-direction:column;align-items:center;gap:24px;margin-bottom:2px;">
+    <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);align-self:flex-start;">Mark Only — Isolated</div>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 133.44 65" width="240" height="117">
+      <polyline fill="#1C1C1C" points="77.81 9.66 89.73 21.79 78.84 32.5 89.79 43.26 77.88 55.38 66.72 44.42 55.78 55.17 43.86 43.05 54.59 32.5 43.83 21.92 55.74 9.8 66.71 20.58 77.81 9.66"/>
+      <path fill="#D4401A" d="M41.59,45.03c-2.56,1.86-5.69,2.97-9.09,2.97-8.55,0-15.5-6.95-15.5-15.5s6.95-15.5,15.5-15.5c3.38,0,6.51,1.1,9.06,2.95l.13-.13,11.85-12.06C47.86,2.93,40.52,0,32.5,0,14.58,0,0,14.58,0,32.5s14.58,32.5,32.5,32.5c8.04,0,15.4-2.94,21.07-7.79l-11.86-12.06-.13-.13Z"/>
+      <path fill="#D4401A" d="M100.94,0c-7.96,0-15.25,2.88-20.91,7.64l11.84,12.04.16.16c2.52-1.78,5.6-2.84,8.92-2.84,8.55,0,15.5,6.95,15.5,15.5s-6.95,15.5-15.5,15.5c-3.29,0-6.34-1.04-8.86-2.8l-.16.16-11.84,12.04c5.65,4.74,12.92,7.59,20.85,7.59,17.92,0,32.5-14.58,32.5-32.5S118.86,0,100.94,0Z"/>
+    </svg>
+  </div>
+  <!-- Campaign variant lockups -->
+  <div style="margin-top:2px;background:var(--panel);padding:40px;" class="fade-in">
+    <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--brick);margin-bottom:8px;">Campaign Variants — Forever-x Resolved</div>
+    <div style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(28,28,28,0.4);margin-bottom:20px;">The -x placeholder filled with the quality they lived by</div>
+    <div style="display:flex;flex-wrap:wrap;gap:2px;">
+      <div style="background:var(--dark);padding:18px 24px;"><span style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:rgba(242,237,232,0.25);">FOREVER-</span><span style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--brick);">WILD</span></div>
+      <div style="background:var(--dark);padding:18px 24px;"><span style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:rgba(242,237,232,0.25);">FOREVER-</span><span style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--brick);">BRAVE</span></div>
+      <div style="background:var(--dark);padding:18px 24px;"><span style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:rgba(242,237,232,0.25);">FOREVER-</span><span style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--brick);">LOUD</span></div>
+      <div style="background:var(--dark);padding:18px 24px;"><span style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:rgba(242,237,232,0.25);">FOREVER-</span><span style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--brick);">STOKED</span></div>
+      <div style="background:var(--dark);padding:18px 24px;"><span style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:rgba(242,237,232,0.25);">FOREVER-</span><span style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--brick);">KIND</span></div>
+      <div style="background:var(--dark);padding:18px 24px;"><span style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:rgba(242,237,232,0.25);">FOREVER-</span><span style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--brick);">SARAH</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 04 THE -X FEATURE -->
+<section class="forever-feature" id="feature">
+  <div class="section-eyebrow"><span class="num">04 /</span> Product Feature</div>
+  <h2 class="section-title fade-in">THE<br>-X WORD.</h2>
+  <div class="forever-grid fade-in">
+    <div class="forever-word"><div class="forever-prefix">Forever-</div><div class="forever-word-value">WILD</div><div class="forever-word-sub">Free spirit. Van-lifer. Never stayed anywhere long enough.</div></div>
+    <div class="forever-word"><div class="forever-prefix">Forever-</div><div class="forever-word-value">LOUD</div><div class="forever-word-sub">Musician. Speaker. Never the quietest person in any room.</div></div>
+    <div class="forever-word"><div class="forever-prefix">Forever-</div><div class="forever-word-value">BRAVE</div><div class="forever-word-sub">Climber. First responder. Always first to step up.</div></div>
+    <div class="forever-word"><div class="forever-prefix">Forever-</div><div class="forever-word-value">SIDEWAYS</div><div class="forever-word-sub">Rally driver. Moto rider. Happiest at the limit.</div></div>
+    <div class="forever-word"><div class="forever-prefix">Forever-</div><div class="forever-word-value">STOKED</div><div class="forever-word-sub">Surfer. Ocean soul. Grateful to be alive and doing this, every single day.</div></div>
+    <div class="forever-word"><div class="forever-prefix">Forever-</div><div class="forever-word-value">SENDING</div><div class="forever-word-sub">Mountain biker. Climber. Always first to drop in.</div></div>
+    <div class="forever-word"><div class="forever-prefix">Forever-</div><div class="forever-word-value">KIND</div><div class="forever-word-sub">Not every life is loud. Some burn quietly and just as bright.</div></div>
+    <div class="forever-word"><div class="forever-prefix">Forever-</div><div class="forever-word-value">RIDICULOUS</div><div class="forever-word-sub">The one who made every gathering a story worth telling.</div></div>
+  </div>
+  <div class="forever-explainer fade-in" style="margin-top:2px;">
+    <div class="forever-explainer-grid">
+      <div>
+        <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--brick);margin-bottom:16px;">How It Works</div>
+        <p>When someone creates a memorial on Forever-x, the platform name resolves. The -x gets replaced with <strong>one word</strong> that captures who the person was. That word becomes the defining statement of the memorial — displayed large, displayed first, visible to everyone who visits.</p>
+        <p style="margin-top:16px;">The community can also contribute — suggesting words, landing on the one that best captures the person. It becomes a collective act of definition. <strong>Not an obituary. A declaration.</strong></p>
+        <p style="margin-top:16px;">The mechanic connects the brand name, the campaign, the product feature, and the hashtag strategy into a single coherent idea. The name is the product. The product is the name.</p>
+      </div>
+      <div>
+        <div class="forever-demo-label">Memorial Header — Live Example</div>
+        <div style="background:#1a1a1a;padding:28px;margin-bottom:2px;">
+          <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:8px;">In memory of Renata's partner — 1987–2024</div>
+          <div class="forever-demo-lockup"><div class="forever-demo-forever">FOREVER-</div><div class="forever-demo-word">STOKED</div></div>
+        </div>
+        <div style="background:#1a1a1a;padding:28px;">
+          <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:8px;">In memory of Aroha Te Koha — 1983–2024</div>
+          <div class="forever-demo-lockup"><div class="forever-demo-forever">FOREVER-</div><div class="forever-demo-word">SENDING</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 05 PALETTE -->
+<section class="palette-section" id="palette">
+  <div class="section-eyebrow"><span class="num">05 /</span> Colour Palette</div>
+  <h2 class="section-title fade-in">CONCRETE<br>&amp; RAW.</h2>
+  <div class="palette-row fade-in">
+    <div class="palette-swatch" style="background:#F2EDE8;border:1px solid rgba(28,28,28,0.08);"><span class="palette-swatch-name" style="color:#1C1C1C;">Warm Off-White</span><span class="palette-swatch-hex" style="color:rgba(28,28,28,0.4);">#F2EDE8</span></div>
+    <div class="palette-swatch" style="background:#1C1C1C;"><span class="palette-swatch-name" style="color:#F2EDE8;">Near Black</span><span class="palette-swatch-hex" style="color:rgba(242,237,232,0.4);">#1C1C1C</span></div>
+    <div class="palette-swatch" style="background:#D4401A;"><span class="palette-swatch-name" style="color:#fff;">Burnt Brick</span><span class="palette-swatch-hex" style="color:rgba(255,255,255,0.5);">#D4401A</span></div>
+    <div class="palette-swatch" style="background:#8C8C7A;"><span class="palette-swatch-name" style="color:#fff;">Warm Grey</span><span class="palette-swatch-hex" style="color:rgba(255,255,255,0.5);">#8C8C7A</span></div>
+  </div>
+  <div class="palette-usage fade-in">
+    <div class="palette-use"><div class="palette-use-swatch" style="background:#F2EDE8;border:1px solid rgba(28,28,28,0.1);"></div><div class="palette-use-label">Warm Off-White</div><p class="palette-use-body">Primary background. The ground everything sits on. Warm enough to feel human, neutral enough to let photography breathe. Never pure white.</p></div>
+    <div class="palette-use"><div class="palette-use-swatch" style="background:#1C1C1C;"></div><div class="palette-use-label">Near Black</div><p class="palette-use-body">Primary type and dark panels. Not pure black — the warmth keeps the palette from feeling cold or corporate. Used for maximum contrast sections.</p></div>
+    <div class="palette-use"><div class="palette-use-swatch" style="background:#D4401A;"></div><div class="palette-use-label">Burnt Brick</div><p class="palette-use-body">The single accent. The -x in the brandmark, the resolved word in the memorial, CTAs — everything important runs through this colour. Use sparingly so it always hits hard.</p></div>
+    <div class="palette-use"><div class="palette-use-swatch" style="background:#8C8C7A;"></div><div class="palette-use-label">Warm Grey</div><p class="palette-use-body">Supporting tone for labels, metadata, secondary copy. Never used for body copy — only for things that should recede.</p></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 06 TYPOGRAPHY -->
+<section class="typography" id="typography">
+  <div class="section-eyebrow"><span class="num">06 /</span> Typography</div>
+  <h2 class="section-title fade-in">THE VOICE<br>ON THE PAGE.</h2>
+  <div class="type-grid fade-in">
+    <div class="type-card">
+      <div class="type-label">Display — Bebas Neue</div>
+      <div class="type-specimen-bebas">FOREVER<br>-X.</div>
+      <div class="type-specimen-mono">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>0123456789</div>
+      <div class="type-meta">
+        <div class="type-meta-row"><span>Use</span><span>All headlines, display, hero type, large callouts</span></div>
+        <div class="type-meta-row"><span>Weight</span><span>Regular (only weight available)</span></div>
+        <div class="type-meta-row"><span>Case</span><span>Always uppercase</span></div>
+        <div class="type-meta-row"><span>Tracking</span><span>2–4px for brandmark, tight for headlines</span></div>
+      </div>
+    </div>
+    <div class="type-card dark-card">
+      <div class="type-label">Labels — Space Mono + Body — DM Sans</div>
+      <div class="type-specimen-mono" style="font-size:13px;margin-bottom:20px;">BEYOND GOODBYE<br>FOREVER-X.COM — 2026</div>
+      <div style="font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.8;color:rgba(242,237,232,0.55);font-weight:300;">DM Sans for all body copy — clean, modern, and human without being sterile. Light weight (300) as default. Semi-bold (600) for emphasis only.</div>
+      <div class="type-meta">
+        <div class="type-meta-row"><span>Space Mono</span><span>Labels, eyebrows, metadata, UI elements</span></div>
+        <div class="type-meta-row"><span>DM Sans</span><span>All body copy, descriptions, longer text</span></div>
+        <div class="type-meta-row"><span>Never use</span><span>Serif fonts, scripts, system fonts</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 07 VOICE & TONE -->
+<section class="voice" id="voice">
+  <div class="section-eyebrow"><span class="num">07 /</span> Voice &amp; Tone</div>
+  <h2 class="section-title fade-in">HOW WE<br>SOUND.</h2>
+  <div class="voice-grid fade-in">
+    <div class="voice-card yes">
+      <div class="voice-card-label">We are</div>
+      <ul class="voice-list">
+        <li>Defiant — we refuse to treat death as the end of the story</li>
+        <li>Celebratory — we lead with life, not loss</li>
+        <li>Direct — short sentences, strong verbs, no hedging</li>
+        <li>Warm — we care deeply, we just don't perform grief</li>
+        <li>Culturally fluent — we speak the language of our communities without trying too hard</li>
+        <li>Inclusive — adventure and passion belong to everyone regardless of gender, age or background</li>
+        <li>Honest — we acknowledge death without dwelling in it</li>
+      </ul>
+    </div>
+    <div class="voice-card no">
+      <div class="voice-card-label">We are never</div>
+      <ul class="voice-list">
+        <li>Soft or apologetic about our tone</li>
+        <li>Performatively grief-led or sombre</li>
+        <li>Corporate or administrative in language</li>
+        <li>Trying to sound like a surfer or skater if we aren't one — authenticity over affectation</li>
+        <li>Gender-assumptive about who lives adventurously</li>
+        <li>Using death euphemisms beyond what's necessary</li>
+        <li>Comparing people to others or implying hierarchy</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<div class="manifesto-block fade-in" id="manifesto">
+  <div class="section-eyebrow" style="margin-bottom:32px;"><span class="num" style="color:rgba(255,255,255,0.2);">08 /</span> The Manifesto</div>
+  <div class="manifesto-text">
+    <span>Here's to the ones who never had a quiet moment.</span>
+    <span class="beat">The ones who took the steeper line. Who caught the bigger wave. Who hit record on the ramp, on the road, on the ridge.</span>
+    <span class="beat">The ones who smelled like petrol and saltwater and the inside of a van. Who played too loud, stayed too late, and <strong>loved every single second of it.</strong></span>
+    <span class="beat">The ones who never explained themselves — because their life was the explanation.</span>
+    <span class="beat">They didn't leave quietly. <strong>They left like they lived.</strong></span>
+    <span class="beat">And they deserve to be remembered the same way.</span>
+    <span class="beat">Not with flowers. <em>Not with soft music and careful words.</em></span>
+    <span class="beat">With the video where they stuck that landing.<br>With the photo from that summit nobody else reached.<br>With the stories that always start with <em>"you won't believe this"</em> — and end with everyone in tears from laughing.</span>
+    <span class="beat">Because some lives are too loud to lose.</span>
+    <span class="beat"><strong>Forever-x is where those stories live.</strong></span>
+    <span class="beat">This is for the ones who burned bright.<br>For the people who loved them.<br>For the send-off they actually deserve.</span>
+  </div>
+  <div class="manifesto-cta" style="color:var(--brick);">FOREVER-WILD.<br>FOREVER-BRAVE.<br>FOREVER-X.</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- PART TWO — CAMPAIGN -->
+<div class="chapter-break">
+  <div>
+    <div class="chapter-break-title">CAMPAIGN</div>
+    <div class="chapter-break-sub">Meta · Google · YouTube · Pinterest — 2026</div>
+  </div>
+  <div class="chapter-break-num">02</div>
+</div>
+
+<!-- CAMPAIGN HERO -->
+<section class="campaign-hero" id="campaign">
+  <div class="campaign-hero-bg"></div>
+  <div class="campaign-hero-grid"></div>
+  <div class="section-eyebrow fade-in" style="position:relative;">Multi-Channel Campaign Pitch — 2026</div>
+  <div class="campaign-title fade-in">
+    <span class="line-stroke">LIVE</span><br>
+    <span class="line-brick">LOUD.</span><br>
+    <span>LEAVE</span><br>
+    <span class="line-warm">PROOF.</span>
+  </div>
+  <p class="campaign-sub fade-in">The campaign strategy for Forever-x — built to reach the bereaved adventure community across Google, YouTube, Instagram and Pinterest. Designed for a $750/month seed budget with 100% revenue recycling over 90 days.</p>
+  <div class="campaign-meta fade-in">
+    <div class="campaign-meta-item"><span class="campaign-meta-label">Platforms</span><span class="campaign-meta-value">Google · YouTube · Meta · Pinterest</span></div>
+    <div class="campaign-meta-item"><span class="campaign-meta-label">Audience</span><span class="campaign-meta-value">Millennials + Gen X, all genders</span></div>
+    <div class="campaign-meta-item"><span class="campaign-meta-label">Seed Budget</span><span class="campaign-meta-value">$750 / 30 days</span></div>
+    <div class="campaign-meta-item"><span class="campaign-meta-label">Model</span><span class="campaign-meta-value">100% revenue recycled — 90 days</span></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 09 PERSONAS -->
+<section class="personas" id="personas">
+  <div class="section-eyebrow"><span class="num">09 /</span> Audience Personas</div>
+  <h2 class="section-title fade-in">WHO WE'RE<br>TALKING TO.</h2>
+  <div class="persona-grid fade-in">
+    <div class="persona-card">
+      <span class="persona-icon">🏄</span>
+      <div class="persona-name">JAKE, 34</div>
+      <span class="persona-tag">The Crew Organiser</span>
+      <p class="persona-desc">Jake grew up surfing with a tight group deeply embedded in coastal action-sports culture. When his best friend died in a motorcycle accident, Jake became the de facto organiser. He's comfortable on Instagram, hates anything clinical, and wants something that doesn't feel like a funeral.</p>
+      <div class="persona-stat"><span>Platform</span><span>Instagram, WhatsApp</span></div>
+      <div class="persona-stat"><span>Trigger</span><span>Sudden, unexpected loss</span></div>
+      <div class="persona-stat"><span>Pain Point</span><span>Stories scattered, no central place</span></div>
+      <div class="persona-quote">"He would've hated anything too serious. We just want to share the good stuff."</div>
+    </div>
+    <div class="persona-card">
+      <span class="persona-icon">🧗</span>
+      <div class="persona-name">TORRES, 29</div>
+      <span class="persona-tag">The Scene Keeper</span>
+      <p class="persona-desc">Torres is a competitive rock climber and outdoor photographer. Her climbing partner — one of the strongest female trad climbers in the state — died on a route they'd both dreamed of. Torres is who the whole community looks to. She wants a memorial that captures the full person: the sends, the laughs, the summit photos.</p>
+      <div class="persona-stat"><span>Platform</span><span>Instagram, YouTube</span></div>
+      <div class="persona-stat"><span>Trigger</span><span>Sudden loss in a close-knit scene</span></div>
+      <div class="persona-stat"><span>Pain Point</span><span>Wants the memorial to feel like her</span></div>
+      <div class="persona-quote">"She wasn't just a climber. She was the reason half of us started."</div>
+    </div>
+    <div class="persona-card">
+      <span class="persona-icon">🏍️</span>
+      <div class="persona-name">SARAH, 44</div>
+      <span class="persona-tag">The Family Anchor</span>
+      <p class="persona-desc">Sarah's mum was a motorbike rider, amateur rally co-driver, and the loudest person at every family gathering. The family wants something that matches her — not a traditional service. Gen X, digitally capable, and the one who will drive adoption and onboard everyone else.</p>
+      <div class="persona-stat"><span>Platform</span><span>Facebook, Instagram</span></div>
+      <div class="persona-stat"><span>Trigger</span><span>Expected loss after illness</span></div>
+      <div class="persona-stat"><span>Pain Point</span><span>Extended family across cities</span></div>
+      <div class="persona-quote">"She lived loud. The memorial should feel the same. Not sad — just real."</div>
+    </div>
+    <div class="persona-card">
+      <span class="persona-icon">🎸</span>
+      <div class="persona-name">MARCUS, 38</div>
+      <span class="persona-tag">The Community Builder</span>
+      <p class="persona-desc">Marcus was part of a tight music and skate scene. His friend — a well-known local musician and skater — passed suddenly. The community was enormous: hundreds of people across multiple cities, all with stories and footage. He needs a platform that can hold that scale and feels like the world it represents.</p>
+      <div class="persona-stat"><span>Platform</span><span>Instagram, TikTok, YouTube</span></div>
+      <div class="persona-stat"><span>Trigger</span><span>Sudden loss, large community impact</span></div>
+      <div class="persona-stat"><span>Pain Point</span><span>Community fragmented across DMs</span></div>
+      <div class="persona-quote">"There were 400 people at the skatepark that night. Every one had something to share."</div>
+    </div>
+    <div class="persona-card">
+      <span class="persona-icon">🌊</span>
+      <div class="persona-name">RENATA, 36</div>
+      <span class="persona-tag">The Soul Surfer's Partner</span>
+      <p class="persona-desc">Renata's partner was a soul surfer — lived for every swell, every dawn patrol, every session. He passed unexpectedly and their whole community — surfers, van-lifers, beach people — are scattered up and down the coast. Renata wants one place where all of them can add to the story.</p>
+      <div class="persona-stat"><span>Platform</span><span>Instagram, Pinterest</span></div>
+      <div class="persona-stat"><span>Trigger</span><span>Sudden loss, dispersed community</span></div>
+      <div class="persona-stat"><span>Pain Point</span><span>Community spread across the coastline</span></div>
+      <div class="persona-quote">"Every swell. Every dawn patrol. Every session. He was stoked until the end."</div>
+    </div>
+    <div class="persona-card">
+      <span class="persona-icon">🚵</span>
+      <div class="persona-name">DEV, 41</div>
+      <span class="persona-tag">The Ride Captain</span>
+      <p class="persona-desc">Dev organised group rides for a mountain bike crew for fifteen years. One of the crew — a woman who had been riding longer than anyone — was killed in a trail accident. Dev has hundreds of GoPro clips and photos from years of rides together and wants a permanent home for all of it.</p>
+      <div class="persona-stat"><span>Platform</span><span>YouTube, Facebook, Strava</span></div>
+      <div class="persona-stat"><span>Trigger</span><span>Accident in long-standing community</span></div>
+      <div class="persona-stat"><span>Pain Point</span><span>Years of footage with nowhere permanent to live</span></div>
+      <div class="persona-quote">"She taught half the crew how to ride. We owe her more than a Facebook post."</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 10 AD CONCEPTS -->
+<section class="concepts" id="concepts">
+  <div class="section-eyebrow"><span class="num">10 /</span> Ad Creative Concepts</div>
+  <h2 class="section-title fade-in">THE WORK.</h2>
+
+  <div class="concept-grid fade-in">
+    <div class="concept-card">
+      <div class="concept-format">Static Feed Image</div>
+      <div class="concept-title">THE LAST<br>PHOTO.</div>
+      <div class="concept-visual">
+        <strong>Visual Direction</strong>
+        Full-bleed action shot: a female surfer pulling into a barrel, shot from water level at golden hour. High contrast, heavy grain, near-black shadows. Small Forever-x UI mockup bottom-left — a memorial feed, a profile, a community of stories.
+      </div>
+      <div class="concept-copy">
+        <div class="concept-copy-label">Overlay Copy</div>
+        <div class="concept-copy-text">SHE NEVER NEEDED A REASON TO PADDLE OUT.</div>
+        <div class="concept-copy-text" style="font-size:26px;margin-top:4px;">FOREVER-STOKED.</div>
+        <div class="concept-copy-sub">forever-x.com</div>
+      </div>
+      <div class="mj-prompt">
+        <div class="mj-prompt-label">Midjourney Prompt</div>
+        <div class="mj-prompt-text">Female surfer pulling into a barrel wave, water-level perspective, golden hour backlight, dramatic spray, high contrast black and white with warm grain, editorial surf photography, cinematic, no text --ar 4:5 --style raw --v 6.1 --chaos 10</div>
+      </div>
+    </div>
+
+    <div class="concept-card">
+      <div class="concept-format">Instagram Reel — 30 sec</div>
+      <div class="concept-title">LEFT LIKE<br>THEY LIVED.</div>
+      <div class="concept-visual">
+        <strong>Visual Direction</strong>
+        Fast-cut gender-balanced montage: female base jumper, male skateboarder, female mountain biker, male rally driver, female rock climber — each cut on a single drum hit. Near-black frames between shots. Then stillness — a Forever-x memorial page loading. Final title card: off-white type on near-black.
+      </div>
+      <div class="concept-copy">
+        <div class="concept-copy-label">Voiceover</div>
+        <div class="concept-copy-text">"They didn't leave quietly. They left like they lived."</div>
+        <div class="concept-copy-sub">End card: "Forever-x — Beyond Goodbye. forever-x.com"</div>
+      </div>
+      <div class="mj-prompt">
+        <div class="mj-prompt-label">Production Note</div>
+        <div class="mj-prompt-text">Hard cuts only. No dissolves. Near-black frames as punctuation. Sound design — wind, crowd, engine, wave. No music bed. VO: warm, unhurried, gender-neutral delivery. Equal representation across athlete archetypes.</div>
+      </div>
+    </div>
+
+    <div class="concept-card">
+      <div class="concept-format">Instagram Story — Vertical</div>
+      <div class="concept-title">SHARE<br>ONE.</div>
+      <div class="concept-visual">
+        <strong>Visual Direction</strong>
+        Full-bleed vertical: female skateboarder mid-kickflip in a sun-cracked concrete bowl, shot low from ground, sharp shadow. Bebas type upper third: "GOT A STORY ABOUT THEM?" Second frame: dark UI mockup of the Forever-x story feed. Third frame: brick red background, cream type — "THIS IS WHERE IT LIVES."
+      </div>
+      <div class="concept-copy">
+        <div class="concept-copy-label">Copy Sequence</div>
+        <div class="concept-copy-text">Frame 1: "Got a story about them?" / Frame 2: "Add it to their memorial." / Frame 3: "Forever-x. Beyond Goodbye."</div>
+        <div class="concept-copy-sub">CTA: Swipe up → forever-x.com</div>
+      </div>
+      <div class="mj-prompt">
+        <div class="mj-prompt-label">Midjourney Prompt</div>
+        <div class="mj-prompt-text">Female skateboarder mid-kickflip, low angle ground perspective, sun-cracked concrete skate bowl, harsh midday shadow, high contrast black and white, Thrasher aesthetic, heavy film grain, raw editorial --ar 9:16 --style raw --v 6.1</div>
+      </div>
+    </div>
+
+    <div class="concept-card">
+      <div class="concept-format">Carousel Ad — 5 Slides</div>
+      <div class="concept-title">FIVE WAYS<br>TO REMEMBER.</div>
+      <div class="concept-visual">
+        <strong>Visual Direction</strong>
+        Each slide: a different person, alternating gender — female snowboarder, male surfer, female rock climber, male moto rider, female musician. Consistent near-black and off-white treatment, brick red type accent. One tribute line per slide. Forever-x wordmark bottom-right. Final slide full brick red, cream Bebas CTA.
+      </div>
+      <div class="concept-copy">
+        <div class="concept-copy-label">Slide Copy</div>
+        <div class="concept-copy-text" style="font-size:13px;line-height:1.7;">
+          S1: "She rode every mountain she could find." → Forever-Wild<br>
+          S2: "He paddled out when no one else would." → Forever-Stoked<br>
+          S3: "She never came down from that summit." → Forever-Brave<br>
+          S4: "He rode every road he could find." → Forever-Sideways<br>
+          S5: "What's their forever word?" → Start free at forever-x.com
+        </div>
+      </div>
+      <div class="mj-prompt">
+        <div class="mj-prompt-label">Midjourney Prompts</div>
+        <div class="mj-prompt-text">S1: Female snowboarder, backcountry powder, high contrast BW --ar 4:5 / S2: Male surfer paddling into massive swell, dawn light --ar 4:5 / S3: Female rock climber, cliff edge silhouette, dramatic sky --ar 4:5 / S4: Male moto rider, dusty trail, motion blur --ar 4:5 / All: --style raw --v 6.1 --chaos 5</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SAMPLE IMAGE -->
+  <div class="sample-block fade-in">
+    <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--brick);margin-bottom:16px;">Sample Creative — The Last Photo (Executed)</div>
+    <div class="sample-grid">
+      <div>
+        <img src="surfer_flat.png" alt="Forever-x — Forever-Stoked ad creative sample" style="width:100%;display:block;border:1px solid rgba(28,28,28,0.08);">
+      </div>
+      <div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:44px;line-height:1;margin-bottom:14px;color:var(--dark);">THE RESULT.</div>
+        <p style="font-size:14px;line-height:1.8;color:rgba(28,28,28,0.6);margin-bottom:24px;">Concept executed — full-bleed action photography, high-contrast warm light, copy in two weights. A single personal statement replaces the activity list — person-first, not session-first. FOREVER-STOKED lands with warmth and the hyphen carries the brand. forever-x.com closes clean.</p>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;gap:16px;"><span style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);min-width:90px;">Hook</span><span style="font-size:13px;color:var(--dark);">SHE NEVER NEEDED A REASON TO PADDLE OUT.</span></div>
+          <div style="display:flex;gap:16px;"><span style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);min-width:90px;">Hero</span><span style="font-size:13px;color:var(--dark);font-weight:700;">FOREVER-STOKED.</span></div>
+          <div style="display:flex;gap:16px;"><span style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);min-width:90px;">Tagline</span><span style="font-size:13px;color:var(--brick);">forever-x.com</span></div>
+          <div style="display:flex;gap:16px;"><span style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);min-width:90px;">Format</span><span style="font-size:13px;color:var(--dark);">4:5 Instagram Feed</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 11 CHANNEL STRATEGY -->
+<section class="channels" id="channels">
+  <div class="section-eyebrow"><span class="num">11 /</span> Channel Strategy</div>
+  <h2 class="section-title fade-in">WHERE WE<br>SHOW UP.</h2>
+
+  <div class="channel-grid fade-in">
+    <div class="channel-card primary">
+      <div class="channel-rank">01</div>
+      <div class="channel-platform">Priority Channel — Paid</div>
+      <div class="channel-name">GOOGLE<br>SEARCH</div>
+      <p class="channel-body">Captures people at the exact moment of need — actively searching for a memorial solution. Highest intent, highest conversion probability. Someone typing "how to create an online memorial" is already in the moment Forever-x was built for.</p>
+      <div class="channel-tags"><span class="channel-tag">Highest Intent</span><span class="channel-tag">Immediate Need</span><span class="channel-tag">50% of budget</span></div>
+    </div>
+    <div class="channel-card secondary">
+      <div class="channel-rank">02</div>
+      <div class="channel-platform">Priority Channel — Paid</div>
+      <div class="channel-name">YOUTUBE<br>ADS</div>
+      <p class="channel-body">The critical intersection: custom intent audiences built from bereavement-related Google searches, served the manifesto Reel while they're watching surf, skate, moto, or climbing content. Reaches the bereaved adventure-community person in their natural habitat — impossible to replicate on any other platform.</p>
+      <div class="channel-tags"><span class="channel-tag">Custom Intent</span><span class="channel-tag">Cultural Match</span><span class="channel-tag">30% of budget</span></div>
+    </div>
+    <div class="channel-card tertiary">
+      <div class="channel-rank">03</div>
+      <div class="channel-platform">Brand Building — Organic First</div>
+      <div class="channel-name">META<br>INSTAGRAM</div>
+      <p class="channel-body">Not a conversion tool at this stage — a brand-building and community-growth channel. Organic content establishes the visual identity and tone. Low-budget boosted posts amplify best-performing content. The goal is cultural presence so that when someone in the community needs Forever-x, they already know who we are.</p>
+      <div class="channel-tags"><span class="channel-tag">Brand Identity</span><span class="channel-tag">Community</span><span class="channel-tag">20% of budget</span></div>
+    </div>
+  </div>
+
+  <div class="targeting-detail fade-in" style="margin-top:2px;">
+    <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--brick);margin-bottom:24px;">Targeting Stack — How Each Channel Works</div>
+    <div class="targeting-detail-grid">
+      <div>
+        <div class="targeting-col-label">Google Search Keywords</div>
+        <ul class="targeting-list">
+          <li>online memorial page</li>
+          <li>digital memorial for a friend</li>
+          <li>how to create a memorial website</li>
+          <li>tribute page for someone who died</li>
+          <li>celebrate someone's life online</li>
+          <li>gathering for someone who passed</li>
+          <li>online funeral tribute</li>
+          <li>memorial page for [name]</li>
+        </ul>
+      </div>
+      <div>
+        <div class="targeting-col-label">YouTube Custom Intent</div>
+        <ul class="targeting-list">
+          <li>Recent searches: bereavement + memorial keywords</li>
+          <li>Content affinity: surf, skate, climb, moto, snowboard, music channels</li>
+          <li>Demographic: 26–55, all genders</li>
+          <li>Ad format: 30-sec unskippable manifesto Reel pre-roll</li>
+          <li>Placement: before action sports content specifically</li>
+          <li>Exclude: people who have already visited forever-x.com</li>
+        </ul>
+      </div>
+      <div>
+        <div class="targeting-col-label">Pinterest — Organic Long Game</div>
+        <ul class="targeting-list">
+          <li>Zero paid spend — organic boards only</li>
+          <li>Board: "Celebration of Life Ideas"</li>
+          <li>Board: "Memorial Inspiration"</li>
+          <li>Board: "Lives Well Lived"</li>
+          <li>Target: the Sarah/Renata persona — planners, organisers</li>
+          <li>Content lifespan: 105 days vs 5hrs on Facebook</li>
+          <li>No competitors in this space on Pinterest</li>
+          <li>Review at 90 days for paid potential</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 12 BUDGET -->
+<section class="budget" id="budget">
+  <div class="section-eyebrow"><span class="num">12 /</span> Budget &amp; Milestones</div>
+  <h2 class="section-title fade-in">90 DAYS.<br>$750 SEED.<br>THEN WE SEE.</h2>
+
+  <div class="budget-model fade-in" style="margin-bottom:2px;">
+    <div class="budget-model-grid">
+      <div>
+        <div class="budget-model-label">Revenue Model</div>
+        <div class="budget-model-title">COST OF SERVICE</div>
+        <p>100% of revenue recycled back into ad spend for the full 90-day period. No founder salary charged. Every dollar earned goes straight back into the channel that earned it.</p>
+        <div class="pricing-row">
+          <div class="pricing-tile"><div class="pricing-tile-label">Activation</div><div class="pricing-tile-value">$120</div><div class="pricing-tile-sub">First 12 months ($10/mo equiv.)</div></div>
+          <div class="pricing-tile"><div class="pricing-tile-label">Ongoing</div><div class="pricing-tile-value">$10</div><div class="pricing-tile-sub">Per month — no price increase</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="budget-model-label">Channel Split</div>
+        <div class="budget-model-title">HOW THE MONEY MOVES</div>
+        <p style="margin-bottom:16px;">Google Search gets the largest share — highest conversion intent. YouTube gets the cultural intersection play. Meta gets the smallest paid allocation — its primary role is organic brand building.</p>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;align-items:center;gap:12px;"><div style="width:50%;height:8px;background:var(--dark);border-radius:1px;"></div><span style="font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);">Google Search — 50%</span></div>
+          <div style="display:flex;align-items:center;gap:12px;"><div style="width:30%;height:8px;background:var(--brick);border-radius:1px;"></div><span style="font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);">YouTube — 30%</span></div>
+          <div style="display:flex;align-items:center;gap:12px;"><div style="width:20%;height:8px;background:var(--warm);border-radius:1px;"></div><span style="font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);">Meta boosted — 20%</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="budget-phases fade-in">
+    <div class="budget-phase">
+      <div class="budget-phase-label">Phase 01</div>
+      <div class="budget-phase-title">DAY 1–30</div>
+      <div class="budget-phase-sub">Seed spend only</div>
+      <div class="budget-line"><span class="budget-line-label">Seed budget</span><span class="budget-line-value">$750</span></div>
+      <div class="budget-line"><span class="budget-line-label">Google Search</span><span class="budget-line-value">$375 / mo</span></div>
+      <div class="budget-line"><span class="budget-line-label">YouTube pre-roll</span><span class="budget-line-value">$225 / mo</span></div>
+      <div class="budget-line"><span class="budget-line-label">Meta boosted</span><span class="budget-line-value">$150 / mo</span></div>
+      <div class="budget-line"><span class="budget-line-label">Daily Google budget</span><span class="budget-line-value accent">~$12.50 / day</span></div>
+      <div class="budget-total"><span class="budget-total-label">Total spend</span><span class="budget-total-value">$750</span></div>
+      <div class="budget-milestone">
+        <div class="budget-milestone-label">30-Day Milestone Review</div>
+        <p>Target: 5–10 memorial activations. Cost per acquisition tracked. Google keyword performance reviewed — pause non-converting terms, double down on converters. YouTube view-through rate assessed. Any revenue recycled immediately into Google Search for Day 31.</p>
+      </div>
+    </div>
+    <div class="budget-phase">
+      <div class="budget-phase-label">Phase 02</div>
+      <div class="budget-phase-title">DAY 31–60</div>
+      <div class="budget-phase-sub">Seed + recycled revenue</div>
+      <div class="budget-line"><span class="budget-line-label">Seed budget</span><span class="budget-line-value">$750</span></div>
+      <div class="budget-line"><span class="budget-line-label">Recycled revenue (est.)</span><span class="budget-line-value accent">$600–$1,200</span></div>
+      <div class="budget-line"><span class="budget-line-label">Est. total spend</span><span class="budget-line-value">$1,350–$1,950</span></div>
+      <div class="budget-line"><span class="budget-line-label">Assumes</span><span class="budget-line-value">5–10 activations @ $120</span></div>
+      <div class="budget-line"><span class="budget-line-label">Shift budget toward</span><span class="budget-line-value accent">Best performer</span></div>
+      <div class="budget-total"><span class="budget-total-label">Compounding budget</span><span class="budget-total-value">~$1.6k</span></div>
+      <div class="budget-milestone">
+        <div class="budget-milestone-label">60-Day Milestone Review</div>
+        <p>Target: 15–25 total memorials. CPA trend established. Lookalike audience built from memorial creators and activated on YouTube. Pinterest organic boards assessed for traffic. Channel budget rebalanced based on actual CPA data — not assumptions.</p>
+      </div>
+    </div>
+    <div class="budget-phase">
+      <div class="budget-phase-label">Phase 03</div>
+      <div class="budget-phase-title">DAY 61–90</div>
+      <div class="budget-phase-sub">Seed + compounded revenue</div>
+      <div class="budget-line"><span class="budget-line-label">Seed budget</span><span class="budget-line-value">$750</span></div>
+      <div class="budget-line"><span class="budget-line-label">Recycled revenue (est.)</span><span class="budget-line-value accent">$1,800–$3,000</span></div>
+      <div class="budget-line"><span class="budget-line-label">Est. total spend</span><span class="budget-line-value">$2,550–$3,750</span></div>
+      <div class="budget-line"><span class="budget-line-label">Assumes</span><span class="budget-line-value">15–25 activations @ $120</span></div>
+      <div class="budget-line"><span class="budget-line-label">Organic referrals</span><span class="budget-line-value accent">Beginning to compound</span></div>
+      <div class="budget-total"><span class="budget-total-label">Compounding budget</span><span class="budget-total-value">~$3.3k</span></div>
+      <div class="budget-milestone">
+        <div class="budget-milestone-label">90-Day Decision Point</div>
+        <p>Two paths: (A) CPA is sustainable and organic referrals are growing — continue bootstrapped with full revenue recycling. (B) CPA data and memorial creation rate is compelling enough to approach seed investors for first round. 90 days of real data is the asset.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- NORTH STAR -->
+  <div class="fade-in" style="background:var(--dark);padding:40px;max-width:900px;margin-top:2px;">
+    <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--brick);margin-bottom:12px;">North Star Metric</div>
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:52px;line-height:1;margin-bottom:12px;color:var(--bg);">COST PER MEMORIAL CREATED</div>
+    <p style="font-size:15px;line-height:1.7;color:rgba(242,237,232,0.55);">Not followers. Not impressions. Not click-through rates. The only number that matters is: what does it cost to acquire one person who activates a memorial on Forever-x? If that number is below $120, the business is viable on ad spend alone. If it's above $120, we either improve conversion or find a cheaper acquisition channel. Everything else is noise.</p>
+    <div style="margin-top:24px;display:grid;grid-template-columns:repeat(3,1fr);gap:2px;">
+      <div style="background:#222;padding:24px;"><div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">Viable CPA</div><div style="font-family:'Bebas Neue',sans-serif;font-size:40px;color:var(--bg);line-height:1;">&lt; $120</div><div style="font-size:12px;color:rgba(242,237,232,0.4);margin-top:4px;">Activation fee covers acquisition cost</div></div>
+      <div style="background:#222;padding:24px;"><div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">Stretch Target</div><div style="font-family:'Bebas Neue',sans-serif;font-size:40px;color:var(--brick);line-height:1;">&lt; $50</div><div style="font-size:12px;color:rgba(242,237,232,0.4);margin-top:4px;">Opens path to profitability + reinvestment</div></div>
+      <div style="background:#222;padding:24px;"><div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">90-Day Target</div><div style="font-family:'Bebas Neue',sans-serif;font-size:40px;color:var(--bg);line-height:1;">40+</div><div style="font-size:12px;color:rgba(242,237,232,0.4);margin-top:4px;">Memorials activated — enough data to act on</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CLOSING -->
+<div class="closing">
+  <div class="closing-bg"></div>
+  <div class="closing-grid-bg"></div>
+  <div class="closing-content">
+    <div class="closing-bm fade-in">FOREVER<br><span class="x">-X.</span></div>
+    <div class="closing-tagline fade-in"><span class="accent">BEYOND</span> GOODBYE</div>
+    <p class="closing-sub fade-in">Forever-x is the only platform in the memorial space that matches the energy of the lives it celebrates. $750 seed. 90 days. Real data. A decision worth making.</p>
+    <div class="closing-pill fade-in">FOREVER-X.COM</div>
+  </div>
+</div>
+
+<footer>
+  <div class="logo">FOREVER<span>-X</span></div>
+  <div class="info">Brand &amp; Campaign — Internal — 2026</div>
+  <div class="info">Confidential</div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
